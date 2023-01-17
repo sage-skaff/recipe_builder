@@ -107,3 +107,19 @@ fn create_list(item_name: &str) -> Vec<String> {
     }
     list
 }
+fn create_recipe() -> Recipe {
+    println!("Enter recipe name:");
+    let mut name = String::new();
+    io::stdin()
+        .read_line(&mut name)
+        .expect("Failed to read line");
+
+    let ingredients = create_list("ingredient");
+    let instructions = create_list("instruction");
+
+    Recipe {
+        name: name,
+        ingredients: ingredients,
+        instructions: instructions,
+    }
+}
