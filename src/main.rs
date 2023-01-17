@@ -92,8 +92,18 @@ struct Recipe {
     ingredients: Vec<String>,
     instructions: Vec<String>,
 }
-// pub fn user_input(input) {
-//     io::stdin()
-//         .read_line(&mut input)
-//         .expect("Failed to read line");
-// }
+fn create_list(item_name: &str) -> Vec<String> {
+    let mut list = Vec::new();
+    loop {
+        println!("Enter {} (or 'done' to finish):", item_name);
+        let mut item = String::new();
+        io::stdin()
+            .read_line(&mut item)
+            .expect("Failed to read line");
+        if item.trim() == "done" {
+            break;
+        }
+        list.push(item);
+    }
+    list
+}
